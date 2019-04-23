@@ -138,6 +138,19 @@ COPY bin/entrypoint-1ppc.sh /st2-docker/bin/entrypoint-1ppc.sh
 COPY bin/inject_env.py /st2-docker/bin/inject_env.py
 COPY config/nginx.st2-1ppc.conf.tpl /etc/nginx/conf.d/st2-1ppc.conf.tpl
 
+#
+# Sohonet changes
+#
+
+# LDAP
+RUN apt-get install -y libldap2-dev libsasl2-dev
+RUN bash -c 'source /opt/stackstorm/st2/bin/activate && pip install git+https://github.com/StackStorm/st2-auth-backend-ldap.git@master#egg=st2_auth_backend_ldap'
+
+
+#
+# End sohonet changes
+#
+
 # Default username/password is used unless overridden by supplying ST2_USER and/or ST2_PASSWORD
 # environment variables to `docker run` after the name of the image:
 #   docker run -e ST2_USER... image
