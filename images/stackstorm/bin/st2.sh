@@ -3,7 +3,7 @@
 ENV_FILE=/st2-docker/env
 
 if [ -f ${ENV_FILE} ]; then
-  source ${ENV_FILE}
+  export $(grep -v '^#' ${ENV_FILE} | xargs)
 fi
 
 # Run custom init scripts which require ST2 to be running
