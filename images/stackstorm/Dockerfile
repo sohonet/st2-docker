@@ -148,6 +148,7 @@ RUN bash -c 'source /opt/stackstorm/st2/bin/activate && pip install git+https://
 
 # Python dependencies
 RUN apt-get install -y python-dev python-pip
+RUN pip install pyyaml
 
 #
 # End sohonet changes
