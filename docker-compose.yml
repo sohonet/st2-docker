@@ -30,6 +30,7 @@ services:
       - ./conf/stackstorm.env:/st2-docker/env
       - /etc/ssl/internal.sohonet.com:/etc/ssl/internal.sohonet.com
       - /root/.ssh:/root/.ssh
+      - /opt/stackstorm-scripts/:/opt/stackstorm-scripts/
     dns_search: .
 
 ### External Services
