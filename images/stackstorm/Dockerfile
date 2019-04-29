@@ -146,6 +146,8 @@ COPY config/nginx.st2-1ppc.conf.tpl /etc/nginx/conf.d/st2-1ppc.conf.tpl
 RUN apt-get install -y libldap2-dev libsasl2-dev
 RUN bash -c 'source /opt/stackstorm/st2/bin/activate && pip install git+https://github.com/StackStorm/st2-auth-backend-ldap.git@master#egg=st2_auth_backend_ldap'
 
+# Python dependencies
+RUN apt-get install -y python-dev python-pip
 
 #
 # End sohonet changes
