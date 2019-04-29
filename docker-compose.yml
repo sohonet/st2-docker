@@ -44,6 +44,15 @@ services:
       - mongo-volume:/data/db
       - mongo-configdb-volume:/data/configdb
     dns_search: .
+  mongo_db_backup:
+    image: mongo:3.4
+    networks:
+      - private
+    volumes:
+      - /opt/mongodb-backup:/opt/mongodb-backup
+    command: |
+      bash -c "mongodump --host mongo --gzip --archive=/opt/mongodb-backup/$$(date -I).gz"
+    dns_search: .
   rabbitmq:
     image: rabbitmq:3.6-management
     env_file:
